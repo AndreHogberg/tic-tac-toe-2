@@ -57,31 +57,34 @@ public class GameTests
     }
 
     [Theory]
-    [InlineData(0, "Player O:\r\nO|O|O\r\n-+-+-\r\n | | \r\n-+-+-\r\n | | \r\n\r\nPLAYER O WON!")]
-    [InlineData(1, "Player O:\r\n | | \r\n-+-+-\r\nO|O|O\r\n-+-+-\r\n | | \r\n\r\nPLAYER O WON!")]
-    [InlineData(2, "Player O:\r\n | | \r\n-+-+-\r\n | | \r\n-+-+-\r\nO|O|O\r\n\r\nPLAYER O WON!")]
-    public void Game_HorizontalLineAllO_ShouldReturnOWinner(int row, string expected)
+    [InlineData(0,'O' ,"Player O:\r\nO|O|O\r\n-+-+-\r\n | | \r\n-+-+-\r\n | | \r\n\r\nPLAYER O WON!")]
+    [InlineData(1,'O' ,"Player O:\r\n | | \r\n-+-+-\r\nO|O|O\r\n-+-+-\r\n | | \r\n\r\nPLAYER O WON!")]
+    [InlineData(2,'O' ,"Player O:\r\n | | \r\n-+-+-\r\n | | \r\n-+-+-\r\nO|O|O\r\n\r\nPLAYER O WON!")]
+    [InlineData(0,'X' ,"Player X:\r\nX|X|X\r\n-+-+-\r\n | | \r\n-+-+-\r\n | | \r\n\r\nPLAYER X WON!")]
+    [InlineData(1,'X' ,"Player X:\r\n | | \r\n-+-+-\r\nX|X|X\r\n-+-+-\r\n | | \r\n\r\nPLAYER X WON!")]
+    [InlineData(2,'X' ,"Player X:\r\n | | \r\n-+-+-\r\n | | \r\n-+-+-\r\nX|X|X\r\n\r\nPLAYER X WON!")]
+    public void Game_HorizontalLineAllO_ShouldReturnOWinner(int row, char mark, string expected)
     {
         
         var board = row switch
         {
             0 => new char[,]
             {
-                { 'O', 'O', 'O' },
+                { mark, mark, mark },
                 { ' ', ' ', ' ' },
                 { ' ', ' ', ' ' }
             },
             1 => new char[,]
             {
                 { ' ', ' ', ' ' },
-                { 'O', 'O', 'O' },
+                { mark, mark, mark },
                 { ' ', ' ', ' ' }
             },
             2 => new char[,]
             {
                 { ' ', ' ', ' ' },
                 { ' ', ' ', ' ' },
-                { 'O', 'O', 'O' }
+                { mark, mark, mark }
             },
         };
         
