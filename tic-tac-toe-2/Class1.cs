@@ -39,6 +39,6 @@ public class Game
         
             yield return displayOutput.ToString();
         }
-
     }
+    
 }
