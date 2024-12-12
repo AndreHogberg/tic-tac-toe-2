@@ -16,14 +16,14 @@ public class Game
             displayOutput.Append($"PLAYER {mark} WON!");
             yield return displayOutput.ToString();
         }
-        else if (CheckHorizontalLines(board))
+        else if (CheckHorizontalLines(board, out mark))
         {
 
-            displayOutput.AppendLine("Player O:");
+            displayOutput.AppendLine($"Player {mark}:");
             BuildBoard(displayOutput, board);
             displayOutput.AppendLine();
 
-            displayOutput.Append("PLAYER O WON!");
+            displayOutput.Append($"PLAYER {mark} WON!");
             yield return displayOutput.ToString();
         }
         else if (CheckDiagonalLines(board))
@@ -37,7 +37,6 @@ public class Game
         }
         else
         {
-
             displayOutput.AppendLine("Game Board Creation...");
             displayOutput.AppendLine(" | | ");
             displayOutput.AppendLine("-+-+-");
@@ -106,16 +105,18 @@ public class Game
         return false;
     }
 
-    private static bool CheckHorizontalLines(char[,] board)
+    private static bool CheckHorizontalLines(char[,] board, out char mark)
     {
         for (var row = 0; row < board.GetLength(0); row++)
         {
-            if (board[row, 0] == 'O' && board[row, 1] == 'O' && board[row, 2] == 'O')
+            if (board[row, 0] != ' ' && board[row,0] == board[row,1] && board[row, 1] == board[row, 2])
             {
+                mark = board[row, 0];
                 return true;
             }
         }
 
+        mark = ' ';
         return false;
     }
 }

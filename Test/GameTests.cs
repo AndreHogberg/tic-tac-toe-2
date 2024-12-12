@@ -95,23 +95,25 @@ public class GameTests
     }
 
     [Theory]
-    [InlineData(1, "Player O:\r\nO| | \r\n-+-+-\r\n |O| \r\n-+-+-\r\n | |O\r\n\r\nPLAYER O WON!")]
-    [InlineData(2, "Player O:\r\n | |O\r\n-+-+-\r\n |O| \r\n-+-+-\r\nO| | \r\n\r\nPLAYER O WON!")]
-    public void Game_DiagonalLineAllO_ShouldReturnOWinner(int position, string expected)
+    [InlineData(1,'O' ,"Player O:\r\nO| | \r\n-+-+-\r\n |O| \r\n-+-+-\r\n | |O\r\n\r\nPLAYER O WON!")]
+    [InlineData(2,'O' ,"Player O:\r\n | |O\r\n-+-+-\r\n |O| \r\n-+-+-\r\nO| | \r\n\r\nPLAYER O WON!")]
+    [InlineData(1,'X' ,"Player X:\r\nX| | \r\n-+-+-\r\n |X| \r\n-+-+-\r\n | |X\r\n\r\nPLAYER X WON!")]
+    [InlineData(2,'X' ,"Player X:\r\n | |X\r\n-+-+-\r\n |X| \r\n-+-+-\r\nX| | \r\n\r\nPLAYER X WON!")]
+    public void Game_DiagonalLineAllO_ShouldReturnOWinner(int position, char mark, string expected)
     {
         var board = position switch
         {
             1 => new char[,]
             {
-                { 'O', ' ', ' ' },
-                { ' ', 'O', ' ' },
-                { ' ', ' ', 'O' }
+                { mark, ' ', ' ' },
+                { ' ', mark, ' ' },
+                { ' ', ' ', mark }
             },
             2 => new char[,]
             {
-                { ' ', ' ', 'O' },
-                { ' ', 'O', ' ' },
-                { 'O', ' ', ' ' }
+                { ' ', ' ', mark },
+                { ' ', mark, ' ' },
+                { mark, ' ', ' ' }
             },
 
 
