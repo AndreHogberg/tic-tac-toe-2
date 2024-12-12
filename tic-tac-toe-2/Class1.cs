@@ -6,10 +6,10 @@ public class Game
 {
     public static IEnumerable<string> Run(char[,] board)
     {
+        var displayOutput = new StringBuilder();
 
-        if (board[0, 0] == 'X')
+        if (CheckVerticalLines(board))
         {
-            var displayOutput = new StringBuilder();
 
             displayOutput.AppendLine("Player X:");
             displayOutput.AppendLine("X| | ");
@@ -21,9 +21,21 @@ public class Game
             displayOutput.Append("PLAYER X WON!");
             yield return displayOutput.ToString();
         }
+        else if (CheckHorizontalLines(board))
+        {
+
+            displayOutput.AppendLine("Player O:");
+            displayOutput.AppendLine("X| |X");
+            displayOutput.AppendLine("-+-+-");
+            displayOutput.AppendLine("O|O|O");
+            displayOutput.AppendLine("-+-+-");
+            displayOutput.AppendLine("X| | ");
+            displayOutput.AppendLine();
+            displayOutput.Append("PLAYER O WON!");
+            yield return displayOutput.ToString();
+        }
         else
         {
-            var displayOutput = new StringBuilder();
 
             displayOutput.AppendLine("Game Board Creation...");
             displayOutput.AppendLine(" | | ");
@@ -34,11 +46,28 @@ public class Game
             displayOutput.AppendLine();
             displayOutput.AppendLine("Board Created.");
             displayOutput.Append("The game will start with player X");
-        
-        
-        
+            
             yield return displayOutput.ToString();
         }
     }
-    
+
+    private static bool CheckVerticalLines(char[,] board)
+    {
+        if (board[0, 0] == 'X' && board[1, 0] == 'X' && board[2, 0] == 'X')
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private static bool CheckHorizontalLines(char[,] board)
+    {
+        if (board[1, 0] == 'O' && board[1, 1] == 'O' && board[1, 2] == 'O')
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
+
