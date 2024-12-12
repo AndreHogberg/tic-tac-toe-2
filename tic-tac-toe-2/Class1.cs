@@ -26,42 +26,43 @@ public class Game
             displayOutput.Append($"PLAYER {mark} WON!");
             yield return displayOutput.ToString();
         }
-        else if (CheckDiagonalLines(board))
+        else if (CheckDiagonalLines(board, out mark))
         {
-            displayOutput.AppendLine("Player O:");
+            displayOutput.AppendLine($"Player {mark}:");
             BuildBoard(displayOutput, board);
             displayOutput.AppendLine();
 
-            displayOutput.Append("PLAYER O WON!");
+            displayOutput.Append($"PLAYER {mark} WON!");
             yield return displayOutput.ToString();
         }
-        else
-        {
-            displayOutput.AppendLine("Game Board Creation...");
-            displayOutput.AppendLine(" | | ");
-            displayOutput.AppendLine("-+-+-");
-            displayOutput.AppendLine(" | | ");
-            displayOutput.AppendLine("-+-+-");
-            displayOutput.AppendLine(" | | ");
-            displayOutput.AppendLine();
-            displayOutput.AppendLine("Board Created.");
-            displayOutput.Append("The game will start with player X");
-            
-            yield return displayOutput.ToString();
-        }
+        
+        displayOutput.AppendLine("Game Board Creation...");
+        displayOutput.AppendLine(" | | ");
+        displayOutput.AppendLine("-+-+-");
+        displayOutput.AppendLine(" | | ");
+        displayOutput.AppendLine("-+-+-");
+        displayOutput.AppendLine(" | | ");
+        displayOutput.AppendLine();
+        displayOutput.AppendLine("Board Created.");
+        displayOutput.Append("The game will start with player X");
+        
+        yield return displayOutput.ToString();
     }
 
-    private static bool CheckDiagonalLines(char[,] board)
+    private static bool CheckDiagonalLines(char[,] board, out char mark)
     {
-        if (board[0, 0] == 'O' && board[1, 1] == 'O' && board[2, 2] == 'O')
+        if (board[0, 0] != ' '&& board[0,0] == board[1,1] && board[1, 1] == board[2, 2])
         {
+            mark = board[0, 0];
             return true;
         }
-        if (board[0, 2] == 'O' && board[1, 1] == 'O' && board[2, 0] == 'O')
+        if (board[0, 2] != ' ' && board[0,2] == board[1,1] && board[1, 1] == board[2, 0])
         {
+            mark = board[0, 2];
             return true;
         }
 
+        mark = ' ';
         return false;
     }
 
