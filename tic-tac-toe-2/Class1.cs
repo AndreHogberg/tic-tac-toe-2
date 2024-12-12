@@ -8,13 +8,12 @@ public class Game
     {
         var displayOutput = new StringBuilder();
 
-        if (CheckVerticalLines(board))
+        if (CheckVerticalLines(board, out var mark))
         {
-
-            displayOutput.AppendLine("Player X:");
+            displayOutput.AppendLine($"Player {mark}:");
             BuildBoard(displayOutput, board);
             displayOutput.AppendLine();
-            displayOutput.Append("PLAYER X WON!");
+            displayOutput.Append($"PLAYER {mark} WON!");
             yield return displayOutput.ToString();
         }
         else if (CheckHorizontalLines(board))
@@ -93,15 +92,17 @@ public class Game
         }
     }
     
-    private static bool CheckVerticalLines(char[,] board)
+    private static bool CheckVerticalLines(char[,] board, out char mark)
     {
         for (var col = 0; col < board.GetLength(0); col++)
         {
-            if (board[0, col] == 'X' && board[1, col] == 'X' && board[2, col] == 'X')
+            if (board[0,col] != ' ' && board[0, col] == board[1, col] && board[1,col] == board[2, col])
             {
+                mark = board[0, col];
                 return true;
             }
         }
+        mark = ' ';
         return false;
     }
 

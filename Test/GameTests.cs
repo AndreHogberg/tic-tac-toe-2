@@ -24,9 +24,9 @@ public class GameTests
     [InlineData(0,'X', "Player X:\r\nX| | \r\n-+-+-\r\nX| | \r\n-+-+-\r\nX| | \r\n\r\nPLAYER X WON!")]
     [InlineData(1,'X', "Player X:\r\n |X| \r\n-+-+-\r\n |X| \r\n-+-+-\r\n |X| \r\n\r\nPLAYER X WON!")]
     [InlineData(2,'X', "Player X:\r\n | |X\r\n-+-+-\r\n | |X\r\n-+-+-\r\n | |X\r\n\r\nPLAYER X WON!")]
-    [InlineData(0, 'O', "Player O:\r\n | |O\r\n-+-+-\r\n | |O\r\n-+-+-\r\n | |O\r\n\r\nPLAYER O WON!")]
-    [InlineData(1, 'O', "Player O:\r\n |O| \r\n-+-+-\r\n |O| \r\n-+-+-\r\n |O| \r\n\r\nPLAYER O WON!")]
-    [InlineData(2, 'O', "Player O:\r\n | |O\r\n-+-+-\r\n | |O\r\n-+-+-\r\n | |O\r\n\r\nPLAYER O WON!")]
+    [InlineData(0,'O', "Player O:\r\nO| | \r\n-+-+-\r\nO| | \r\n-+-+-\r\nO| | \r\n\r\nPLAYER O WON!")]
+    [InlineData(1,'O', "Player O:\r\n |O| \r\n-+-+-\r\n |O| \r\n-+-+-\r\n |O| \r\n\r\nPLAYER O WON!")]
+    [InlineData(2,'O', "Player O:\r\n | |O\r\n-+-+-\r\n | |O\r\n-+-+-\r\n | |O\r\n\r\nPLAYER O WON!")]
     public void Game_VerticalLineAllX_ShouldReturnXWinner(int col, char mark, string expected)
     {
         var board = col switch
