@@ -12,3 +12,6 @@
 
 
 Pomodoro 2
+
+Pomodoro 3:
+Return the winner out of the check functions
