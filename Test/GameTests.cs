@@ -53,7 +53,7 @@ public class GameTests
         
         var result = Game.Run(board);
 
-        result.First().Should().Be(expected);
+        result.Should().Contain(expected);
     }
 
     [Theory]
@@ -91,7 +91,7 @@ public class GameTests
         
         var result = Game.Run(board);
 
-        result.First().Should().Be(expected);
+        result.Should().Contain(expected);
     }
 
     [Theory]
@@ -114,12 +114,40 @@ public class GameTests
                 { ' ', ' ', mark },
                 { ' ', mark, ' ' },
                 { mark, ' ', ' ' }
-            },
-
-
+            }
         };
+        
         var result = Game.Run(board);
-        result.First().Should().Be(expected);
+        result.Should().Contain(expected);
+    }
 
+    [Fact]
+    public void Game_PlayerOMakeRandomMove_ShouldReturnBoardWithRandomMove()
+    {
+        var board = new char[,]
+        {
+            { ' ', ' ', ' ' },
+            { ' ', ' ', ' ' },
+            { ' ', ' ', ' ' }
+        };
+
+        var result = Game.Run(board).ToList();
+
+        result[1].Count(p => p.Equals('X')).Should().Be(2);
+    }
+
+    [Fact]
+    public void Game_NoMoreMoveToMakeAndNoThreeMarksInARow_ShouldReturnDraw()
+    {
+        var board = new char[,]
+        {
+            { 'X', 'O', 'X' },
+            { 'X', 'O', 'O' },
+            { 'O', 'X', 'X' }
+        };
+
+        var result = Game.Run(board).ToList();
+
+        result.Should().Contain("Player O:\r\nX|O|X\r\n-+-+-\r\nX|O|O\r\n-+-+-\r\nO|X|X\r\n\r\nTHE GAME ENDS WITH A DRAW!");
     }
 }

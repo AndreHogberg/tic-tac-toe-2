@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tic-tac-toe-2", "tic-tac-to
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{B13CF821-677D-45F3-AE5A-E08F20758C54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{C038DF72-F72D-4463-AAEE-7814DC4F5D60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{B13CF821-677D-45F3-AE5A-E08F20758C54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B13CF821-677D-45F3-AE5A-E08F20758C54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B13CF821-677D-45F3-AE5A-E08F20758C54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C038DF72-F72D-4463-AAEE-7814DC4F5D60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C038DF72-F72D-4463-AAEE-7814DC4F5D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C038DF72-F72D-4463-AAEE-7814DC4F5D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C038DF72-F72D-4463-AAEE-7814DC4F5D60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
